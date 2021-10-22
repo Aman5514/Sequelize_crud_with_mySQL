@@ -1,0 +1,32 @@
+.header{
+    height: 75px;
+    width: 100%;
+    background: rgba(50, 150, 150, 0.05);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 40px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px dashed darkgray;
+}
+.header > h3{
+    font-size:30px;
+    font-family: 'Pacifico', cursive; 
+    letter-spacing:5px;
+    color:darkslategrey;
+}
+.header > .menu{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap: 25px;
+}
+.header > .menu > .link{
+    text-decoration: none;
+    color:darkgray;
+    font-size:20px;
+    font-weight: 500;
+}
+.header > .menu > .link:hover{
+    color:teal;
+}

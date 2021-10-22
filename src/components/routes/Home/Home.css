@@ -1,0 +1,55 @@
+.homeContainer{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+    flex-direction:column;
+}
+.tableContainer{
+    width:90%;
+    border-bottom: 1px dashed black;
+    /* padding:20px; */
+}
+.tableContainer  .heading{
+    padding:20px 5px;
+    background: rgba(20, 150, 100, 0.16);
+    border-bottom: 1px dashed gray;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.tableData{
+    font-size:14px;
+    font-weight: 400;
+    padding: 10px 5px;
+    text-transform: capitalize;
+    color:rgb(98, 120, 146);
+    border-right: 1px dashed gray;
+}
+.buttonContainer{
+    display:flex;
+    justify-content:center;
+    gap: 15px;
+    width:100%;
+    align-items:center;
+}
+.buttonContainer > button{
+    padding:5px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size:16px;
+}
+.edit{
+    background:rgb(60, 196, 196);
+    color:white;
+}
+.edit > .link{
+    color: white;
+    text-decoration: none;
+}
+.delete{
+    background:rgb(241, 99, 99);
+    color:white;
+}
