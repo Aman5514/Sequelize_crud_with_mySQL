@@ -8,7 +8,6 @@ const addUser = async (req, res) => {
     address: req.body.address,
   });
 
-  console.log(req.body.email);
 
   const response = {
     message: "successfull data added",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-
+import ViewPost from '../AddPosts/ViewPost/ViewPost';
 const Home = () => {
   const [users, setUsers] = useState();
 
@@ -44,6 +44,7 @@ const Home = () => {
   return (
     <div className="homeContainer">
       {users ? (
+      <>
         <table className="tableContainer">
           <thead>
             <tr>
@@ -67,7 +68,7 @@ const Home = () => {
                     <td className="tableData">
                       <div className="buttonContainer">
                         <button className="edit">
-                          <Link className="link" to={`/add-user/${data.id}`}>
+                          <Link className="link" to={`/add-user/${data.uuid}`}>
                             Edit
                           </Link>
                         </button>
@@ -84,6 +85,10 @@ const Home = () => {
               ))
             : ""}
         </table>
+        <ViewPost
+        AfterDelete={()=> FetchData()}
+        />
+        </>
       ) : (
         "Loading Data . . . "
       )}

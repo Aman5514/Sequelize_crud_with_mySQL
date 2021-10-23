@@ -1,0 +1,37 @@
+.heroContainer{
+    width:95%;
+    margin-top: 20px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 10px;
+}
+
+.ViewContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px dotted gray;
+    background-color: rgba(20, 150, 100, 0.10);
+    width: 340px;
+    gap: 10px;
+    padding: 5px;
+    border-radius:6px;
+}
+
+.imageContainer{
+    object-fit: contain;
+    height: 250px;
+    width: 100%;
+}
+.ViewContainer > p{
+    font-size:20px;
+    color:gray;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.deletebtn{
+    padding:8px 16px;
+    background-color: rgb(240, 86, 86);
+    color: white;
+}

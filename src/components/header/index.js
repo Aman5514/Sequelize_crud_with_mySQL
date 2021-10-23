@@ -9,6 +9,7 @@ function Header() {
       <div className="menu">
         <Link className="link" to="/">Home</Link>
         <Link className="link" to="/add-user">Add User</Link>
+        <Link className="link" to="/add-posts">Add Posts</Link>
       </div>
     </div>
   );
