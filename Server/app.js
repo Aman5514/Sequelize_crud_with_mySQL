@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const database = require('./utilities/database')
 const userCtrl = require('./controller/usersController')
 const postCtrl = require('./controller/postsController')
-const store = require('./middleware/multer')
+// const store = require('./middleware/multer')
 
 const corsOptions = {
     origin: true,

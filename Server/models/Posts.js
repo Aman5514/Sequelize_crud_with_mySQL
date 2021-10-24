@@ -13,6 +13,7 @@ const Posts = database.define("posts", {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV1,
     primaryKey: true,
+    allowNull: false
   },
   image:{
     type: DataTypes.BLOB,

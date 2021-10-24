@@ -53,11 +53,9 @@ const ViewPost = () => {
                 alt=""
               />
               <p>{data.summary}</p>
-              <h4>Post date - {data.createdAt.slice(0, 10)}</h4>
+              <h4>Post date - {data.createdAt.slice(0, 10)} </h4>
               <div className="buttonContainer">
-                <button className="deletebtn" onClick={()=> {
-                  onDeletePost(data.id)
-                  }}>
+                <button className="deletebtn" onClick={()=> onDeletePost(data.id)}>
                   delete
                 </button>
               </div>

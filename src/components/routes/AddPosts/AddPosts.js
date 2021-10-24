@@ -9,21 +9,21 @@ const AddPosts = () => {
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    if(image && summary){
+    if (image && summary) {
       const response = await fetch("/add-posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          image:image,
-          summary:summary
+          image: image,
+          summary: summary,
         }),
       });
-      history.push('/')
     }
   };
 
+  console.log(image);
 
   return (
     <div className="container">
@@ -42,7 +42,6 @@ const AddPosts = () => {
               const files = e.target.files;
               let reader = new FileReader();
               reader.readAsDataURL(files[0]);
-
               reader.onload = (e) => {
                 setImage(e.target.result);
               };

@@ -57,7 +57,6 @@ const deleteUser = async (req, res) => {
 
 const readAll = async (req, res) => {
   const data = await Users.findAll();
-
   const response = {
     data: data,
   };

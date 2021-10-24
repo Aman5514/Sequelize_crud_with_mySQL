@@ -4,6 +4,7 @@ const addPost = async (req, res) => {
   const data = await Posts.create({
     image: req.body.image,
     summary: req.body.summary,
+    
   });
 };
 

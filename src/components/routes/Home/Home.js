@@ -86,7 +86,6 @@ const Home = () => {
             : ""}
         </table>
         <ViewPost
-        AfterDelete={()=> FetchData()}
         />
         </>
       ) : (
