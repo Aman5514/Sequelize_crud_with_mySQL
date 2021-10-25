@@ -5,7 +5,6 @@ import AddUser from "./components/routes/AddUser/AddUser";
 import Home from './components/routes/Home/Home';
 import AddPosts from './components/routes/AddPosts/AddPosts'
 
-
 function App() {
 
 const Error = ()=>(

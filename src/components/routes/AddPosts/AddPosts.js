@@ -1,29 +1,39 @@
 import React, { useState } from "react";
 import "./AddPosts.css";
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
+
 
 const AddPosts = () => {
-  const [image, setImage] = useState("");
-  const [summary, setSummary] = useState("");
+  const state = {
+    image:'',
+    summary:''
+  }
+  const [postData , setPostData] = useState(state)
+
+  const onChangeHandle = (event) =>
+  {
+    setPostData({...postData,[event.target.name]:event.target.value});
+  }
+  const imageUpload= (event)=>
+  {
+    setPostData({...postData,image:event.target.files[0]});
+  }
+
   const history = useHistory();
 
+
   const onFormSubmit = async (event) => {
+
     event.preventDefault();
-    if (image && summary) {
-      const response = await fetch("/add-posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: image,
-          summary: summary,
-        }),
-      });
+    const formData = new FormData();
+    formData.append("image", postData.image,postData.image.name);
+    formData.append("summary",postData.summary )
+    const response = await axios.post("/add-posts",formData);
+    if(response.status === 200){
+      history.push("/")
     }
   };
-
-  console.log(image);
 
   return (
     <div className="container">
@@ -37,15 +47,9 @@ const AddPosts = () => {
             type="file"
             name="image"
             id="image"
+            accept="image/*"
             required
-            onChange={(e) => {
-              const files = e.target.files;
-              let reader = new FileReader();
-              reader.readAsDataURL(files[0]);
-              reader.onload = (e) => {
-                setImage(e.target.result);
-              };
-            }}
+            onChange={imageUpload}
           />
         </label>
         <label htmlFor="summary">
@@ -55,7 +59,7 @@ const AddPosts = () => {
             name="summary"
             id="summary"
             required
-            onChange={(e) => setSummary(e.target.value)}
+            onChange={onChangeHandle}
             placeholder="About post..!"
           />
         </label>

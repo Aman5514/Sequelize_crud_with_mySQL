@@ -6,7 +6,21 @@ const bodyParser = require("body-parser");
 const database = require('./utilities/database')
 const userCtrl = require('./controller/usersController')
 const postCtrl = require('./controller/postsController')
-// const store = require('./middleware/multer')
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './image')
+  },
+  filename: function (req, file, cb) {
+    cb(null,Date.now()+"_"+file.originalname)
+  }
+})
+const upload = multer({ storage: storage })
+
+
+
+
 
 const corsOptions = {
     origin: true,
@@ -16,6 +30,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/image",express.static('image'))
 // Database
 
 database.sync().then(() => {
@@ -43,7 +58,7 @@ app.delete('/delete',userCtrl.deleteUser)
 
 // for Post routes =======================>
 
-app.post('/add-posts',postCtrl.addPost )
+app.post('/add-posts',upload.single("image"),postCtrl.addPost )
 
 app.get('/posts',postCtrl.allPosts)
 

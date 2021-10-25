@@ -3,7 +3,6 @@ import "./style.css";
 
 const ViewPost = () => {
   const [posts, setPosts] = useState();
-
   const FetchPostData = async () => {
     try {
       const fetchPosts = await fetch("/posts", {
@@ -30,7 +29,7 @@ const ViewPost = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: userId,
+        image: userId,
       }),
     });
     FetchPostData();
@@ -49,13 +48,13 @@ const ViewPost = () => {
             <div className="ViewContainer" key={data.id}>
               <img
                 className="imageContainer"
-                src={Buffer.from(data.image).toString("ascii")}
+                src={`http://localhost:5000/image/${data.image}`}
                 alt=""
               />
               <p>{data.summary}</p>
-              <h4>Post date - {data.createdAt.slice(0, 10)} </h4>
+              <h4>Posted on - {data.createdAt.slice(0, 10)} </h4>
               <div className="buttonContainer">
-                <button className="deletebtn" onClick={()=> onDeletePost(data.id)}>
+                <button className="deletebtn" onClick={()=> onDeletePost(data.image)}>
                   delete
                 </button>
               </div>

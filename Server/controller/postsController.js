@@ -1,11 +1,12 @@
+const fs = require('fs');
 const Posts = require("../models/Posts");
 
 const addPost = async (req, res) => {
-  const data = await Posts.create({
-    image: req.body.image,
-    summary: req.body.summary,
-    
-  });
+await Posts.create({
+  image:req.file.filename,
+  summary:req.body.summary
+})
+  res.status(200).send("success")
 };
 
 const allPosts = async (req, res) => {
@@ -19,7 +20,7 @@ const allPosts = async (req, res) => {
 const deletePost = async (req, res) => {
   const data = await Posts.destroy({
     where: {
-      id: req.body.id,
+      image: req.body.image,
     },
   });
 };
