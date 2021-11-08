@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import ViewPost from '../AddPosts/ViewPost/ViewPost';
 const Home = () => {
   const [users, setUsers] = useState();
 
@@ -85,8 +84,6 @@ const Home = () => {
               ))
             : ""}
         </table>
-        <ViewPost
-        />
         </>
       ) : (
         "Loading Data . . . "

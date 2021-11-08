@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddUser from "./components/routes/AddUser/AddUser";
 import Home from './components/routes/Home/Home';
 import AddPosts from './components/routes/AddPosts/AddPosts'
+import ViewPosts from './components/routes/AddPosts/ViewPost/ViewPost'
 
 function App() {
 
@@ -18,6 +19,7 @@ const Error = ()=>(
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/posts" component={ViewPosts} />
         <Route exact path="/add-user" component={AddUser} />
         <Route exact path="/add-user/:id" component={AddUser} />
         <Route exact path="/add-posts" component={AddPosts}/>

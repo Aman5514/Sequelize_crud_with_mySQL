@@ -3,10 +3,11 @@ const app = express();
 const port = 5000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const database = require('./utilities/database')
+const db = require('./utilities/database')
 const userCtrl = require('./controller/usersController')
 const postCtrl = require('./controller/postsController')
 const multer = require('multer');
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,9 +20,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
-
-
-
 const corsOptions = {
     origin: true,
 };
@@ -31,15 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/image",express.static('image'))
-// Database
 
-database.sync().then(() => {
-    console.log("Database successfully connnected")
-})
-.catch((err) =>
-{
-    console.log("ERROR  : " + err.message)
-})
 
 app.get('/', (req , res)=>
 {
@@ -63,6 +53,9 @@ app.post('/add-posts',upload.single("image"),postCtrl.addPost )
 app.get('/posts',postCtrl.allPosts)
 
 app.delete('/delete-post',postCtrl.deletePost)
+
+app.get('/userPost',userCtrl.userPost )
+
 
 // server 
 

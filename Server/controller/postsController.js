@@ -1,12 +1,20 @@
-const fs = require('fs');
-const Posts = require("../models/Posts");
+const fs = require("fs");
+const path = require("path");
+const db = require("../utilities/database");
+const Posts = db.Posts;
 
 const addPost = async (req, res) => {
-await Posts.create({
-  image:req.file.filename,
-  summary:req.body.summary
-})
-  res.status(200).send("success")
+
+const userDetails = (req.body.userId).split(",");
+  await Posts.create({
+    image: req.file.filename,
+    summary: req.body.summary,
+    category: req.body.category,
+    user_id: userDetails[0],
+    user_name:userDetails[1]
+  });
+
+  res.status(200).send("success");
 };
 
 const allPosts = async (req, res) => {
@@ -23,6 +31,11 @@ const deletePost = async (req, res) => {
       image: req.body.image,
     },
   });
+  fs.unlink(path.join("image/" + req.body.image), function (err) {
+    if (err) {
+      console.log("Error :",err.message);
+    }
+  });
 };
 
-module.exports = { addPost, allPosts , deletePost };
+module.exports = { addPost, allPosts, deletePost };

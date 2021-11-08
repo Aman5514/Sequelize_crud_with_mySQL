@@ -1,8 +1,6 @@
-const { Sequelize, DataTypes } = require("sequelize");
+module.exports = (sequelize , DataTypes)=>{
 
-const database = require("../utilities/database");
-
-const Users = database.define("users", {
+const Users = sequelize.define("users", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -27,5 +25,5 @@ const Users = database.define("users", {
     type: DataTypes.STRING,
   },
 });
-
-module.exports = Users;
+return Users;
+}
